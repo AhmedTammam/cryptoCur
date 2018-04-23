@@ -1,23 +1,23 @@
 import React,{ Component } from 'react';
-import axios from 'axios';
+import { connect  } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchCoins } from '../actions/index';
 
 
-export default class List extends Component {
-    state = {
-        coins: []
+class List extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            coins: []
+        }
+
+
     }
+
 
     
-    componentDidMount() {
-            axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=10`)
-                .then(res => {
-                    console.log(res.data);
-                    this.setState({
-                        coins: res.data
-                    })
-                })
-    }
-
+   
     render() {
         return (
             <tbody>
@@ -27,14 +27,20 @@ export default class List extends Component {
                     <td>{coin.name}</td>
                     <td>{coin.market_cap_usd}</td>
                     <td>{coin.price_usd}</td>
-                    <td></td>
+                    <td>{coin['24h_volume_usd']}</td>
                     <td>{coin.available_supply}</td>
                     <td>{coin.percent_change_24h}</td>
-
                 </tr>
             ))}
             </tbody>
+           
         );
     }
 }
-
+function mapStateToProps(state) {
+    coins: state.coinReducer
+}
+function mapDispatchToProps(dispatch) {
+    bindActionCreators({fetchCoins},dispatch);
+}
+export default connect (mapStateToProps, mapDispatchToProps)(List);
