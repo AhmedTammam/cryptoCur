@@ -7,7 +7,6 @@ export function fetchCoins() {
     return {
         type: FETCH_COINS,
         payload: Request
-
     }
 }
 

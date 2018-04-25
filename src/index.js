@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { combineReducers } from 'redux';
 import CoinReducer from './reducers/coinReducer';
 import { Provider } from 'react-redux';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import ReduxPromise from 'redux-promise';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -12,10 +13,10 @@ import registerServiceWorker from './registerServiceWorker';
 const Reducers = combineReducers({
     coinReducer: CoinReducer
 });
-const store = createStore(Reducers);
+const storeWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={storeWithMiddleware(Reducers)}>
         <App />
     </Provider>
 , document.getElementById('root'));
