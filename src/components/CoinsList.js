@@ -11,17 +11,27 @@ class List extends Component {
         this.state = {
             coins: []
         }
+
+
     }
 
     componentDidMount(){
+        setInterval(() => {
+            this.fetch();
+            console.log("data Update");
+            
+        }, 6000)
+    }
+
+    fetch(){
         this.props.fetchCoins()
         .then(res => {
            this.setState({
                coins: res.payload.data
            }) 
-        });
+        })
     }
-   
+
     render() {
         return (
             <tbody>
