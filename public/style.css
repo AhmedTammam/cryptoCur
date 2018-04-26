@@ -1,0 +1,46 @@
+body{
+    background-color: #1e1f33;
+}
+
+.container-fluid{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.navbar {
+    background-color: #332e56;
+    padding: 1.5rem 0;
+}
+
+.navbar-brand{
+    color:white;
+    margin: 0 auto;
+}
+.navbar-brand:hover{
+    color:#494486;
+}
+
+.form-control{
+    background-color: #2d2c4c;
+    border: 1px solid #494486;
+}
+.form-control::after, ::before{
+    box-sizing:content-box; !important
+}
+
+.table{
+    background-color: #2b2a49;
+    color:#97b3ff
+}
+.thead{
+    background-color: #342f57;
+    color:darkred(#97b3ff);
+}
+
+.table thead th {
+    border-bottom: 1px solid #6f8fe6;
+    border-top: 1px solid #6f8fe6;
+}
+.table td, .table th{
+    border-bottom: 1px solid #6f8fe6;
+}

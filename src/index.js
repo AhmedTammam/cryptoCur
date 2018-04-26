@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { combineReducers } from 'redux';
 import CoinReducer from './reducers/coinReducer';
+import filterReducer from './reducers/filterReducer';
 import { Provider } from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import ReduxPromise from 'redux-promise';
@@ -11,7 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 const Reducers = combineReducers({
-    coinReducer: CoinReducer
+    coinReducer: CoinReducer,
+    filter: filterReducer
 });
 const storeWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
