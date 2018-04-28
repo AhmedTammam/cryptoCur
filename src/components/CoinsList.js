@@ -27,7 +27,7 @@ class List extends Component {
 
     render() {
         
-        if(this.props.filter){
+        if(!this.props.filter){
             return(
                 <tbody>
                 {this.props.coins.map(coin => (
