@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { filteraction } from '../actions/filter';
+import { bindActionCreators } from 'redux';
 
 class SearchBar extends Component{
     constructor(props){
@@ -9,6 +11,7 @@ class SearchBar extends Component{
         }
 
         this.onInputChange = this.onInputChange.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     onInputChange(e){
@@ -16,15 +19,15 @@ class SearchBar extends Component{
             keyword: e.target.value.toLowerCase()
         })
     }
+
     onFormSubmit(e){
         e.preventDefault();
-        const result = this.props.coins.filter(coin => coin.name.toLowerCase() === this.state.keyword);
-        this.setState({
-            filter: result
-        })
+        const filterArr = this.props.coins.filter( coin => coin.name.toLowerCase() === this.state.keyword);
+       this.props.filteraction(filterArr);
+       console.log(filterArr);
+       
     }
         
-
 
     render(){
         return(
@@ -42,7 +45,6 @@ class SearchBar extends Component{
     }
 }
 
-
 function mapStateToProps(state) {
     return {
         coins: state.coinReducer,
@@ -50,5 +52,11 @@ function mapStateToProps(state) {
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({ filteraction }, dispatch);   
+}
 
-export default connect(mapStateToProps)(SearchBar);
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -1,6 +1,8 @@
-export function filter(term) {
+export const FILTER = 'FILTER'
+
+export function filteraction(term) {
     return {
-        type: 'FILTER',
-        payload: filter
+        type: FILTER,
+        payload: term
     }
 }

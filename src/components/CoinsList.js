@@ -26,10 +26,11 @@ class List extends Component {
     
 
     render() {
-        if(!this.props.filter){
+        
+        if(this.props.filter){
             return(
                 <tbody>
-                {this.props.filter.map(coin => (
+                {this.props.coins.map(coin => (
                     <tr key={coin.id}>
                         <td>{coin.name}</td>
                         <td>{coin.market_cap_usd}</td>
@@ -44,7 +45,7 @@ class List extends Component {
         }else {
             return (
                 <tbody>
-                {this.props.coins.map(coin => (
+                {this.props.filter.map(coin => (
                     <tr key={coin.id}>
                         <td>{coin.name}</td>
                         <td>{coin.market_cap_usd}</td>
