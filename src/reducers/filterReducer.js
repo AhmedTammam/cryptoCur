@@ -5,7 +5,8 @@ export default function filterReducer(state= [], action) {
     switch (action.type) {
         case FILTER:
             return (
-                state.concat(action.payload)
+                action.payload
+                
             )
     
         default:

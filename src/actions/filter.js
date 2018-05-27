@@ -1,8 +1,8 @@
 export const FILTER = 'FILTER'
 
-export function filteraction(term) {
+export function filteraction(state) {
     return {
         type: FILTER,
-        payload: term
+        payload: state
     }
 }

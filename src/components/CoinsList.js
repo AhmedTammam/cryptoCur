@@ -12,7 +12,7 @@ class List extends Component {
             this.fetch();
             console.log("data Update");
             
-        }, 6000)
+        }, 1000000)
     }
 
     fetch(){
@@ -26,11 +26,13 @@ class List extends Component {
     
 
     render() {
+        console.log(this.props.filter);
         
-        if(!this.props.filter){
+        
+        if(this.props.filter.length > 0){
             return(
                 <tbody>
-                {this.props.coins.map(coin => (
+                {this.props.filter.map(coin => (
                     <tr key={coin.id}>
                         <td>{coin.name}</td>
                         <td>{coin.market_cap_usd}</td>
@@ -45,7 +47,7 @@ class List extends Component {
         }else {
             return (
                 <tbody>
-                {this.props.filter.map(coin => (
+                {this.props.coins.map(coin => (
                     <tr key={coin.id}>
                         <td>{coin.name}</td>
                         <td>{coin.market_cap_usd}</td>
@@ -57,7 +59,7 @@ class List extends Component {
                 ))}
                 </tbody>
             );
-    }
+        }
         
     }
 }
